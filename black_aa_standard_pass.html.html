@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Color Contrast Test</title>
+        <!-- Adobe Font -->
+        <link rel="stylesheet" href="https://use.typekit.net/oit4ghk.css">
+        <style>
+            body{
+                font-family: usual, sans-serif;
+                /* font-weight: 400;
+                font-style: normal; */
+                background-color: #E9EDF0;
+            }
+            h1{
+                text-align: center;
+            }
+            #app{
+                border-radius: 8px;
+                background-color: white;
+                width: 60vw;
+                margin: auto;
+                margin-bottom: 80px;
+                padding: 20px 10px 40px 10px;
+                box-shadow: 0 6px 27px #aeb4be;
+            }
+            .upper_container{
+                margin-left: 15vw;
+            }
+            .container{
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .child{
+                width: 100px;
+                height: 100px;
+                line-height: 100px;
+                text-align: center;
+                font-size: 0.95em;
+                margin-bottom: 5px;
+                margin-right: 5px;
+            }
+            .color_text{
+                text-transform: capitalize;
+                text-align: left;
+                font-size: 1.2em;
+                margin-bottom: 10px;
+                display: inline-block;
+            }
+            #intro{
+                text-align: center;
+                font-size: 1.2em;
+            }
+            .text_strong{
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Color Contrast Test for Atlas</h1>
+        <div id="app">
+            <p id="intro">Here are the colors that passes WCAG AA standard with <span class="text_strong">black text</span>.</p>
+            <div class="upper_container" v-for="(value, name) in colors">
+                <p class="color_text">{{name}}</p>
+                <div class="container">
+                    <div class="child" v-for="colorItem in value" :key="value.hexNumber" :style="{backgroundColor: colorItem.hexNumber, color: colorItem.textColor}">
+                        <span>{{colorItem.hexNumber}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data:{
+                colors: {
+                        green: [
+                            {
+                                hexNumber: '#65C87A',
+                                textColor: 'black'
+                            },
+                            {
+                                // changed
+                                hexNumber: '#38A869',
+                                textColor: 'black'
+                            },
+                            {
+                                // changed
+                                hexNumber: '#008585',
+                                textColor: 'black'
+                            }
+                        ],
+                        blue: [
+                            // moved
+                            {
+                                hexNumber: '#BFD3FF',
+                                textColor: 'black'
+                            },
+                            {
+                                // changed
+                                hexNumber: '#899BEB',
+                                textColor: 'black'
+                            },
+                            // moved
+                            {
+                                hexNumber: '#5098D5',
+                                textColor: 'black'
+                            },
+                            {
+                                // changed
+                                hexNumber: '#6161FF',
+                                textColor: 'black'
+                            }
+                        ],
+                        purple: [
+                            // moved
+                            {
+                                hexNumber: '#E8C5F2',
+                                textColor: 'black'
+                            },
+                            {
+                                // changed
+                                hexNumber: '#9362B2',
+                                textColor: 'black'
+                            },
+                            {
+                                // changed
+                                hexNumber: '#FF2EFF',
+                                textColor: 'black'
+                            },
+                            {
+                                // changed
+                                hexNumber: '#D100D1',
+                                textColor: 'black'
+                            }
+                        ],
+                        grey: [
+                            // moved
+                            {
+                                // changed
+                                hexNumber: '#E6E6E6',
+                                textColor: 'black'
+                            },
+                            {
+                                // changed
+                                hexNumber: '#969696',
+                                textColor: 'black'
+                            },
+                            {
+                                hexNumber: '#757575',
+                                textColor: 'black'
+                            },
+                        ],
+                        yellow: [
+                            {
+                                // changed
+                                hexNumber: '#F5F500',
+                                textColor: 'black'
+                            },
+                            {
+                                // changed
+                                hexNumber: '#DBDB00',
+                                textColor: 'black'
+                            },
+                            {
+                                // changed
+                                hexNumber: '#858500',
+                                textColor: 'black'
+                            }
+                        ],
+                        oragne: [
+                            // moved
+                            // {
+                            //     hexNumber: '#F2B238',
+                            //     textColor: 'black'
+                            // },
+                            {
+                                // changed
+                                hexNumber: '#FFA500',
+                                textColor: 'black'
+                            },
+                            {
+                                // changed
+                                hexNumber: '#D18800',
+                                textColor: 'black'
+                            },
+                            {
+                                // changed
+                                hexNumber: '#9D6A0B',
+                                textColor: 'black'
+                            },
+                        ],
+                        red: [
+                            {
+                                hexNumber: '#EF5775',
+                                textColor: 'black'
+                            },
+                            {
+                                hexNumber: '#E5153F',
+                                textColor: 'black'
+                            },
+                            {
+                                hexNumber: '#D75745',
+                                textColor: 'black'
+                            }
+                            // {
+                            //     hexNumber: '#E7133D',
+                            //     textColor: 'black'
+                            // },
+                        ],
+                    }
+            }
+        })
+    </script>
+</html>
