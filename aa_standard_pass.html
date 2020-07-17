@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Color Contrast Test</title>
+        <!-- Adobe Font -->
+        <link rel="stylesheet" href="https://use.typekit.net/oit4ghk.css">
+        <style>
+            body{
+                font-family: usual, sans-serif;
+                /* font-weight: 400;
+                font-style: normal; */
+                background-color: #E9EDF0;
+            }
+            h1{
+                text-align: center;
+            }
+            #app{
+                border-radius: 8px;
+                background-color: white;
+                width: 60vw;
+                margin: auto;
+                margin-bottom: 80px;
+                padding: 20px 10px 40px 10px;
+                box-shadow: 0 6px 27px #aeb4be;
+            }
+            .upper_container{
+                margin-left: 15vw;
+            }
+            .container{
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .child{
+                width: 100px;
+                height: 100px;
+                line-height: 100px;
+                text-align: center;
+                font-size: 0.95em;
+                margin-bottom: 5px;
+                margin-right: 5px;
+            }
+            .color_text{
+                text-transform: capitalize;
+                text-align: left;
+                font-size: 1.2em;
+                margin-bottom: 10px;
+                display: inline-block;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>Color Contrast Test for Atlas</h1>
+        <div id="app">
+            <div class="upper_container" v-for="(value, name) in colors">
+                <p class="color_text">{{name}}</p>
+                <div class="container">
+                    <div class="child" v-for="colorItem in value" :key="value.hexNumber" :style="{backgroundColor: colorItem.hexNumber, color: colorItem.textColor}">
+                        <span>{{colorItem.hexNumber}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data:{
+                colors: {
+                        green: [
+                            {
+                                hexNumber: '#65C87A',
+                                textColor: 'black'
+                            },
+                            {
+                                hexNumber: '#20603C',
+                                textColor: 'white'
+                            },
+                            {
+                                hexNumber: '#003636',
+                                textColor: 'white'
+                            }
+                        ],
+                        blue: [
+                            {
+                                hexNumber: '#5098D5',
+                                textColor: 'black'
+                            },
+                            {
+                                hexNumber: '#3455DB',
+                                textColor: 'white'
+                            },
+                            {
+                                hexNumber: '#000060',
+                                textColor: 'white'
+                            },
+                            {
+                                hexNumber: '#BFD3FF',
+                                textColor: 'black'
+                            }
+                        ],
+                        purple: [
+                            {
+                                hexNumber: '#925FB1',
+                                textColor: 'white'
+                            },
+                            {
+                                hexNumber: '#AA00AA',
+                                textColor: 'white'
+                            },
+                            {
+                                hexNumber: '#550055',
+                                textColor: 'white'
+                            },
+                            {
+                                hexNumber: '#E8C5F2',
+                                textColor: 'black'
+                            }
+                        ],
+                        grey: [
+                            {
+                                hexNumber: '#6F7B88',
+                                textColor: 'black'
+                            },
+                            {
+                                hexNumber: '#707070',
+                                textColor: 'white'
+                            },
+                            {
+                                hexNumber: '#2B2B2B',
+                                textColor: 'white'
+                            }
+                        ],
+                        yellow: [
+                            {
+                                hexNumber: '#EDCA4E',
+                                textColor: 'black'
+                            },
+                            {
+                                hexNumber: '#8D6708',
+                                textColor: 'white'
+                            },
+                            {
+                                hexNumber: '#5A440D',
+                                textColor: 'white'
+                            }
+                        ],
+                        oragne: [
+                            {
+                                hexNumber: '#D9823B',
+                                textColor: 'black'
+                            },
+                            {
+                                hexNumber: '#AA5D00',
+                                textColor: 'white'
+                            },
+                            {
+                                hexNumber: '#4A321D',
+                                textColor: 'white'
+                            },
+                            {
+                                hexNumber: '#F2B238',
+                                textColor: 'black'
+                            }
+                        ],
+                        red: [
+                            {
+                                hexNumber: '#D75745',
+                                textColor: 'black'
+                            },
+                            {
+                                hexNumber: '#DC143C',
+                                textColor: 'white'
+                            },
+                            {
+                                hexNumber: '#870C25',
+                                textColor: 'white'
+                            },
+                            {
+                                hexNumber: '#FC88C8',
+                                textColor: 'black'
+                            }
+                        ],
+                    }
+            }
+        })
+    </script>
+</html>

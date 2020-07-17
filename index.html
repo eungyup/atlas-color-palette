@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Color Contrast Test</title>
+        <!-- Adobe Font -->
+        <link rel="stylesheet" href="https://use.typekit.net/oit4ghk.css">
+        <style>
+            body{
+                font-family: usual, sans-serif;
+                /* font-weight: 400;
+                font-style: normal; */
+                background-color: #E9EDF0;
+            }
+            h1{
+                text-align: center;
+            }
+            #app{
+                border-radius: 8px;
+                background-color: white;
+                width: 60vw;
+                margin: auto;
+                margin-bottom: 80px;
+                padding: 20px 10px 40px 10px;
+                box-shadow: 0 6px 27px #aeb4be;
+            }
+            .upper_container{
+                margin-left: 15vw;
+            }
+            .container{
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .child{
+                width: 100px;
+                height: 100px;
+                /* to vertically center => size of height = size of line-height */
+                line-height: 100px;
+                text-align: center;
+                font-size: 0.95em;
+                /* display: inline-block; */
+                margin-bottom: 5px;
+                margin-right: 5px;
+            }
+            .color_text{
+                text-transform: capitalize;
+                text-align: left;
+                font-size: 1.2em;
+                margin-bottom: 10px;
+                display: inline-block;
+                /* margin: auto; */
+                /* margin: */
+            }
+            .filter{
+                margin-left: 15vw;
+                margin-bottom: 30px;
+            }
+            .white_text{
+                color: white;
+            }
+            /* .black_text{
+                color: black;
+            } */
+            .bold_text{
+                font-weight: bold;
+            }
+            /* .regular_text{
+                font-weight: normal;
+            } */
+
+        </style>
+    </head>
+    <body>
+        <h1>Color Contrast Test for Atlas</h1>
+        <div id="app">
+            <!-- Filter -->
+            <div class="filter">
+                <label for="text_color">Choose a text color:</label>
+                <select id="text_color" v-model="selectedOption">
+                    <option v-for="option in textOption" :key="option" :value="option">{{option}}</option>
+                </select><br><br>
+                <label for="bold">Bold:</label>
+                <input type="checkbox" id="bold" v-model="checkBox">
+            </div>
+            <!-- Colors -->
+            <div class="upper_container" v-for="(value, name) in colors">
+                <p class="color_text">{{name}}</p>
+                <div :class="checkColorText(selectedOption)" class="container">
+                    <div class="child" v-for="hexNumber in value" :key="hexNumber" :style="{backgroundColor: hexNumber}">
+                        <span :class="changeBold">{{hexNumber}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data:{
+                // For Text Color Filter
+                selectedOption: '',
+                textOption: ['black', 'white'],
+                // For Bold Check Box Filter
+                checkBox: false,
+                colors: {
+                        green: ['#65C87A', '#20603C', '#003636'],
+                        blue: ['#5098D5', '#3455DB', '#000060', '#BFD3FF'],
+                        purple: ['#925FB1', '#AA00AA', '#550055', '#E8C5F2'],
+                        grey: ['#6F7B88', '#707070', '#2B2B2B'],
+                        yellow: ['#EDCA4E', '#8D6708', '#5A440D'],
+                        oragne: ['#D9823B', '#AA5D00', '#4A321D', '#F2B238'],
+                        red: ['#D75745', '#DC143C', '#870C25', '#FC88C8']
+                    }
+            },
+            methods: {
+                checkColorText(option){
+                    if(option == 'white'){
+                        return 'white_text';
+                    }
+                }
+            },
+            mounted: function() {
+                console.log(this.checkBox);
+            },
+            computed: {
+                changeBold(){
+                    if(this.checkBox){
+                        return 'bold_text'
+                    }
+                }
+            }
+        })
+    </script>
+</html>
